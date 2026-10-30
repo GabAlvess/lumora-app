@@ -208,6 +208,8 @@ Novos componentes devem reutilizar os tokens e incluir estados relevantes na gal
 
 O celular é a central de controle do jogador: reúne amigos, quartos, personagem, loja e configurações. Reutiliza os tokens e componentes desta biblioteca e aparece no canto inferior direito. A galeria inclui a seção **Celular do jogador** e um acionador persistente para experimentar as cinco telas.
 
+Ao abrir, o aparelho sobe de fora da tela; ao fechar, desce suavemente em uma transição de 320ms. A preferência de movimento reduzido desativa o deslocamento. O foco e os controles do jogo só são liberados ao concluir a saída.
+
 A apresentação reutilizável está em `styles/components/_phone.scss`; o controlador opcional e independente de framework está em `scripts/player-phone.mjs` e é distribuído em `dist/player-phone.mjs`. Ele implementa abertura, fechamento, histórico, início, foco e Escape. O JavaScript exclusivo da galeria fornece os dados fictícios e as ações de demonstração.
 
 Veja [Celular do jogador](CELULAR.md) para anatomia, estados, API e integração com os controles do jogo. Prévias: [desktop](assets/player-phone-desktop.png) e [tela pequena](assets/player-phone-mobile.png). Nenhuma lista de amigos, compra, configuração ou personalização real está conectada a um backend.

@@ -27,6 +27,12 @@ Reutiliza cores semânticas, Manrope, bordas, raios, espaçamento, foco e compon
 
 Variáveis locais: `--lm-phone-width` (23rem) e `--lm-phone-height` (40rem). O componente limita essas dimensões ao viewport com unidades `dvh` e respeita `safe-area-inset-*`; o conteúdo rola em telas baixas e com zoom. A moldura e os comandos permanecem dentro da tela.
 
+### Entrada e saída
+
+O aparelho entra subindo de fora da tela e sai descendo até desaparecer. A transição de `transform` dura **320ms**, configurável por `--lm-phone-duration`, com curva `cubic-bezier(.22, 1, .36, 1)` para desaceleração suave. O controlador aguarda o término da saída antes de fechar o diálogo, devolver o foco e emitir `lm:phone-close`; o cenário continua inerte durante todo o movimento.
+
+Reabrir durante a saída reverte a transição a partir da posição atual, sem fechar o diálogo ou emitir eventos duplicados. `destroy()` fecha imediatamente e libera os controles. Com `prefers-reduced-motion: reduce`, abertura e fechamento são imediatos. O acionador e a posição final do aparelho permanecem os mesmos.
+
 ## Estados e navegação
 
 - **Recolhido:** acionador visível com `aria-expanded="false"`.
@@ -94,12 +100,12 @@ Cada `data-phone-view` deve ser único dentro da instância. `home` é obrigató
 
 | API / evento | Contrato |
 | --- | --- |
-| `open()`, `close()` | Abrem/recolhem o aparelho; operações repetidas são inofensivas. |
-| `navigate(view)` | Retorna `true` para uma tela conhecida; `false` para desconhecida ou após desmontagem. |
-| `back()` | Retorna `true` quando havia histórico; `false` caso contrário. |
+| `open()`, `close()` | Iniciam a entrada/saída; operações repetidas são inofensivas. O fechamento se conclui após a transição. |
+| `navigate(view)` | Retorna `true` para uma tela conhecida; `false` para desconhecida, durante a saída ou após desmontagem. |
+| `back()` | Retorna `true` quando havia histórico; `false` durante a saída, após desmontagem ou sem histórico. |
 | `currentView` | Identificador da tela atual. |
 | `destroy()` | Fecha, libera ouvintes e impede novas operações nessa instância. |
-| `lm:phone-open`, `lm:phone-close` | Eventos propagados pelo wrapper, com `detail.view`. |
+| `lm:phone-open`, `lm:phone-close` | Eventos propagados pelo wrapper, com `detail.view`. Abertura no início da entrada; fechamento ao concluir a saída. |
 | `lm:phone-navigate` | Emitido após uma mudança de tela, com `detail.view`. |
 
 O controlador não injeta HTML, não faz requisições e não usa armazenamento. O JavaScript da galeria gerencia os exemplos separadamente.
