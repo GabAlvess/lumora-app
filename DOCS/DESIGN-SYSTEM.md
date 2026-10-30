@@ -1,6 +1,6 @@
 # Design system do Lumora
 
-**Versão:** 0.1 — base implementada para iniciar as telas.
+**Versão:** 0.2 — base de UI com celular do jogador.
 
 **Referências:** [fundação v0.1](01-FUNDACAO-DO-PROJETO.md), [direção de design](DESIGN.md) e imagem de acesso fornecida pelo responsável pelo projeto nesta conversa. A imagem orienta a linguagem visual; não foi adicionada como asset de distribuição nem define funcionalidades de login social.
 
@@ -31,7 +31,7 @@ styles/
   components/                 # componentes por responsabilidade
   utilities/                  # espaçamento e helpers com prefixo lm-
 scripts/
-  icons.mjs                   # seleção dos 94 ícones
+  icons.mjs                   # seleção dos 95 ícones
   build-assets.mjs            # sprite, fonte e licenças locais
   serve.mjs                   # servidor de referência
 examples/
@@ -116,7 +116,7 @@ Para ajustes pontuais de tema, prefira variáveis CSS no wrapper:
 }
 ```
 
-Atualize os estados relacionados e valide contraste ao mudar cores. A v0.1 inclui o tema claro; um tema escuro ainda não foi especificado.
+Atualize os estados relacionados e valide contraste ao mudar cores. A v0.2 inclui o tema claro; um tema escuro ainda não foi especificado.
 
 ## Catálogo de componentes
 
@@ -131,6 +131,7 @@ Atualize os estados relacionados e valide contraste ao mudar cores. A v0.1 inclu
 | `_feedback.scss` | `lm-badge`, `lm-alert`, `lm-toast`, `lm-toast-region`, `lm-progress`, `lm-spinner`, `lm-skeleton` | Tons `--success`, `--warning`, `--danger`, `--info` em badge e alert; badges também `--neutral` e `--accent`; skeleton `--circle`. |
 | `_overlays.scss` | `lm-dialog`, `lm-dropdown`, `lm-tooltip-anchor`, `lm-tooltip` | Dialog `--wide`, `__header`, `__body`, `__footer`; dropdown `__menu`, `__item`, `__item--danger`. |
 | `_data.scss` | `lm-avatar`, `lm-avatar-group`, `lm-status`, `lm-list`, `lm-table`, `lm-stat` | Avatar `--sm`, `--lg`, `--xl`, `--square`, `--accent`, `--warm`, `__status`; status `--away`, `--offline`; list `__item`, `__content`; stat `__label`, `__value`. |
+| `_phone.scss` | `lm-phone`, `lm-phone-launcher` | Celular ancorado no canto inferior direito, aplicativos, cabeçalho, conteúdo rolável e início. Controlador opcional `dist/player-phone.mjs`. |
 | `_social.scss` | `lm-toolbar`, `lm-currency`, `lm-item-grid`, `lm-item`, `lm-message` | Currency `--accent`; item `aria-pressed`; message `--self`, `__bubble`, `__author`, `__time`. Apenas apresentação. |
 
 As classes de elemento e modificador sempre usam o prefixo completo, por exemplo `lm-button lm-button--outline`, e não apenas `--outline`.
@@ -179,7 +180,7 @@ As classes de elemento e modificador sempre usam o prefixo completo, por exemplo
 
 ## Ícones
 
-Os 94 ícones locais vêm de **Lucide**, sob licença ISC. A seleção está em [scripts/icons.mjs](../scripts/icons.mjs), e os IDs do sprite seguem `lm-icon-NOME`, por exemplo `lm-icon-leaf`, `lm-icon-users`, `lm-icon-coffee` e `lm-icon-shield-check`.
+Os 95 ícones locais vêm de **Lucide**, sob licença ISC. A seleção está em [scripts/icons.mjs](../scripts/icons.mjs), e os IDs do sprite seguem `lm-icon-NOME`, por exemplo `lm-icon-leaf`, `lm-icon-users`, `lm-icon-coffee` e `lm-icon-shield-check`.
 
 O tamanho padrão é 20px, em grade de 24 × 24, traço de 1,75px, `fill: none` e `stroke: currentColor`. Não há fonte de ícones, CDN ou download de assets em tempo de uso. O sprite deve ser servido na mesma origem da página; abrir o HTML diretamente por `file://` não é a forma de uso suportada.
 
@@ -202,3 +203,11 @@ Compile com `npm run build` e teste com `npm test`, conforme o [README do reposi
 O suporte inicial usa recursos de navegadores modernos, incluindo `:has`, `dialog`, unidades `dvh` e propriedades lógicas. Uma matriz formal de navegadores, testes com leitores de tela e uma auditoria manual completa permanecem pendentes. A validação automatizada não certifica conformidade integral de acessibilidade.
 
 Novos componentes devem reutilizar os tokens e incluir estados relevantes na galeria. Mudanças visuais importantes devem atualizar este documento e [DECISOES.md](DECISOES.md).
+
+## Celular do jogador
+
+O celular é a central de controle do jogador: reúne amigos, quartos, personagem, loja e configurações. Reutiliza os tokens e componentes desta biblioteca e aparece no canto inferior direito. A galeria inclui a seção **Celular do jogador** e um acionador persistente para experimentar as cinco telas.
+
+A apresentação reutilizável está em `styles/components/_phone.scss`; o controlador opcional e independente de framework está em `scripts/player-phone.mjs` e é distribuído em `dist/player-phone.mjs`. Ele implementa abertura, fechamento, histórico, início, foco e Escape. O JavaScript exclusivo da galeria fornece os dados fictícios e as ações de demonstração.
+
+Veja [Celular do jogador](CELULAR.md) para anatomia, estados, API e integração com os controles do jogo. Prévias: [desktop](assets/player-phone-desktop.png) e [tela pequena](assets/player-phone-mobile.png). Nenhuma lista de amigos, compra, configuração ou personalização real está conectada a um backend.

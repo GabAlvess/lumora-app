@@ -1,4 +1,5 @@
 // Gallery behavior only. Production apps own component state and business logic.
+import { initPlayerPhone } from '/dist/player-phone.mjs';
 const sprite = '/dist/lumora-icons.svg';
 function renderIcon(svg, name) {
   const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
@@ -8,6 +9,59 @@ function renderIcon(svg, name) {
   svg.replaceChildren(use);
 }
 document.querySelectorAll('svg[data-icon]').forEach(svg => renderIcon(svg, svg.dataset.icon));
+
+const phoneRoot = document.querySelector('[data-lm-phone]');
+const phone = initPlayerPhone(phoneRoot);
+document.querySelector('[data-phone-demo-open]').addEventListener('click', () => phone.open());
+const phoneNotice = phoneRoot.querySelector('#phone-demo-notice');
+function phoneFeedback(message) {
+  phoneNotice.hidden = false;
+  phoneNotice.textContent = message;
+}
+phoneRoot.addEventListener('lm:phone-navigate', () => { phoneNotice.hidden = true; });
+phoneRoot.querySelectorAll('[data-phone-demo]').forEach(button => button.addEventListener('click', () => phoneFeedback(button.dataset.phoneDemo)));
+
+const friendSearch = phoneRoot.querySelector('#phone-friend-search');
+const friendState = phoneRoot.querySelector('#phone-friend-state');
+function updatePhoneFriends() {
+  const state = friendState.value;
+  const query = friendSearch.value.trim().toLocaleLowerCase('pt-BR');
+  let count = 0;
+  phoneRoot.querySelectorAll('[data-phone-friend]').forEach(friend => {
+    friend.hidden = !friend.dataset.phoneFriend.includes(query);
+    if (!friend.hidden) count++;
+  });
+  phoneRoot.querySelector('#phone-friend-list').hidden = state !== 'ready' || count === 0;
+  const empty = phoneRoot.querySelector('#phone-friend-empty');
+  empty.hidden = state !== 'empty' && !(state === 'ready' && count === 0);
+  empty.textContent = state === 'empty' ? 'Sua lista de amigos ainda está vazia.' : 'Nenhum amigo encontrado. Tente outro nome.';
+  phoneRoot.querySelector('#phone-friend-loading').hidden = state !== 'loading';
+  phoneRoot.querySelector('#phone-friend-error').hidden = state !== 'error';
+  phoneRoot.querySelector('#phone-friend-results').setAttribute('aria-busy', String(state === 'loading'));
+}
+friendSearch.addEventListener('input', updatePhoneFriends);
+friendState.addEventListener('change', updatePhoneFriends);
+phoneRoot.querySelector('#phone-friend-retry').addEventListener('click', () => {
+  friendState.value = 'ready';
+  updatePhoneFriends();
+  friendSearch.focus();
+});
+phoneRoot.querySelectorAll('[data-phone-tone]').forEach(button => button.addEventListener('click', () => {
+  phoneRoot.querySelectorAll('[data-phone-tone]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  const preview = phoneRoot.querySelector('#phone-avatar-preview');
+  preview.dataset.tone = button.dataset.phoneTone;
+  preview.querySelector('p').textContent = `Prévia de estilo · ${button.textContent}`;
+}));
+let selectedProduct = 'Poltrona';
+phoneRoot.querySelectorAll('[data-phone-product]').forEach(button => button.addEventListener('click', () => {
+  selectedProduct = button.dataset.phoneProduct;
+  phoneRoot.querySelectorAll('[data-phone-product]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  phoneRoot.querySelector('#phone-product-selection').textContent = `Item selecionado: ${selectedProduct}`;
+}));
+phoneRoot.querySelector('#phone-try-product').addEventListener('click', () => phoneFeedback(`${selectedProduct}: prévia selecionada. Nenhuma compra foi realizada.`));
+phoneRoot.querySelector('#phone-volume').addEventListener('input', event => {
+  phoneRoot.querySelector('#phone-volume-value').textContent = `${event.target.value}%`;
+});
 
 const toastRegion = document.querySelector('#toast-region');
 function notify(message) {

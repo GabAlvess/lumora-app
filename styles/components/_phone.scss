@@ -1,0 +1,68 @@
+@use '../abstracts' as a;
+
+// The phone is a floating game control. Gallery scenery lives in examples/.
+.lm-phone-launcher {
+  position: fixed;
+  inset-inline-end: max(var(--lm-space-6), env(safe-area-inset-right));
+  inset-block-end: max(var(--lm-space-6), env(safe-area-inset-bottom));
+  z-index: var(--lm-z-popover);
+  box-shadow: var(--lm-shadow-float);
+}
+
+.lm-phone {
+  --lm-phone-width: 23rem;
+  --lm-phone-height: 40rem;
+  position: fixed;
+  inset: auto;
+  inset-inline-end: max(var(--lm-space-4), env(safe-area-inset-right));
+  inset-block-end: max(var(--lm-space-4), env(safe-area-inset-bottom));
+  width: min(var(--lm-phone-width), calc(100% - 2 * var(--lm-space-4) - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  height: min(var(--lm-phone-height), calc(100dvh - 2 * var(--lm-space-4) - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--lm-space-2);
+  overflow: hidden;
+  border: 1px solid var(--lm-primary);
+  border-radius: var(--lm-radius-xl);
+  background: var(--lm-primary);
+  color: var(--lm-text);
+  box-shadow: var(--lm-shadow-float);
+
+  &[open] { display: flex; flex-direction: column; }
+  &::backdrop { background: transparent; }
+  &__screen { display: flex; flex: 1; flex-direction: column; min-height: 0; overflow: hidden; border-radius: var(--lm-radius-lg); background: var(--lm-bg); }
+  &__status { display: flex; align-items: center; justify-content: space-between; gap: var(--lm-space-2); padding: var(--lm-space-3) var(--lm-space-4) var(--lm-space-2); color: var(--lm-text-secondary); font-size: var(--lm-text-xs); }
+  &__header { display: flex; align-items: center; gap: var(--lm-space-2); padding: var(--lm-space-2) var(--lm-space-3); border-block-end: 1px solid var(--lm-border); background: var(--lm-surface); }
+  &__title { flex: 1; min-width: 0; font-size: var(--lm-text-lg); font-weight: var(--lm-weight-bold); }
+  &__content { flex: 1; min-height: 0; padding: var(--lm-space-4); overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+  &__view { display: flex; flex-direction: column; gap: var(--lm-space-4); min-width: 0; }
+  &__dock { display: flex; justify-content: center; padding: var(--lm-space-2); border-block-start: 1px solid var(--lm-border); background: var(--lm-surface); }
+  &__profile { display: flex; align-items: center; gap: var(--lm-space-3); }
+  &__apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--lm-space-3); }
+  &__app {
+    @include a.interactive;
+    display: flex; flex-direction: column; align-items: flex-start; gap: var(--lm-space-3);
+    min-width: 0; min-height: 7rem; padding: var(--lm-space-4);
+    border: 1px solid var(--lm-border-strong); border-radius: var(--lm-radius-md);
+    background: var(--lm-surface); color: var(--lm-text); font: inherit;
+    font-size: var(--lm-text-sm); font-weight: var(--lm-weight-semibold); text-align: start; cursor: pointer;
+    &:hover { background: var(--lm-primary-soft); border-color: var(--lm-primary); }
+    &--wide { grid-column: 1 / -1; flex-direction: row; align-items: center; min-height: var(--lm-control-lg); }
+  }
+  &__notice { padding: var(--lm-space-3); border-radius: var(--lm-radius-sm); background: var(--lm-primary-soft); font-size: var(--lm-text-sm); }
+  &__item { display: flex; align-items: center; gap: var(--lm-space-3); padding-block: var(--lm-space-3); border-block-end: 1px solid var(--lm-border); }
+  &__item > .lm-list__content { min-width: 0; overflow-wrap: anywhere; }
+  &__avatar-preview { display: grid; place-items: center; gap: var(--lm-space-3); padding: var(--lm-space-6); border: 1px solid var(--lm-border); border-radius: var(--lm-radius-md); background: var(--lm-primary-soft); color: var(--lm-primary); }
+  &__avatar-preview > .lm-icon { width: 5rem; height: 5rem; }
+  &__avatar-preview[data-tone='accent'] { background: var(--lm-accent-soft); color: var(--lm-accent); }
+  &__avatar-preview[data-tone='info'] { background: var(--lm-info-soft); color: var(--lm-info); }
+  &__category { border: 0; margin: 0; padding: 0; }
+  &__category > legend { padding: 0; margin-block-end: var(--lm-space-3); font-weight: var(--lm-weight-semibold); }
+  &__category .lm-choice { display: flex; justify-content: space-between; width: 100%; }
+  &__settings-link { display: flex; align-items: center; justify-content: space-between; gap: var(--lm-space-3); min-height: var(--lm-control-md); color: var(--lm-text); text-decoration: none; }
+}
+
+@media (max-width: 35.99rem) {
+  .lm-phone-launcher { inset-inline-end: max(var(--lm-space-4), env(safe-area-inset-right)); inset-block-end: max(var(--lm-space-4), env(safe-area-inset-bottom)); }
+}

@@ -13,7 +13,7 @@ npm ci
 npm run build
 ```
 
-Saída em `dist/`: CSS normal e minificado, sprite SVG com 94 ícones, catálogo de ícones, fonte local Manrope e licenças dos assets. Os arquivos gerados e `node_modules` não são versionados.
+Saída em `dist/`: CSS normal e minificado, sprite SVG com 95 ícones, catálogo de ícones, fonte local Manrope, controlador opcional `player-phone.mjs` e licenças dos assets. Os arquivos gerados e `node_modules` não são versionados.
 
 ## Galeria de componentes
 
@@ -35,6 +35,7 @@ npm run watch
 - Tokens e mixins: [styles/abstracts](styles/abstracts).
 - Componentes: [styles/components](styles/components).
 - Convenções, exemplos e catálogo de classes: [DOCS/DESIGN-SYSTEM.md](DOCS/DESIGN-SYSTEM.md).
+- Celular do jogador: [componente, API e integração](DOCS/CELULAR.md).
 - Exemplo executável: [examples/design-system.html](examples/design-system.html).
 
 ## Validar

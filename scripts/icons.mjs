@@ -12,5 +12,6 @@ export const icons = [
   'grid-2x2', 'layout-dashboard', 'list', 'message-circle', 'messages-square', 'send',
   'smile', 'image', 'paperclip', 'globe', 'link', 'copy', 'external-link', 'download',
   'upload', 'pencil', 'trash-2', 'more-horizontal', 'menu', 'panel-left-close',
-  'maximize-2', 'move', 'rotate-cw', 'paintbrush', 'palette', 'accessibility', 'check-check'
+  'maximize-2', 'move', 'rotate-cw', 'paintbrush', 'palette', 'accessibility', 'check-check',
+  'smartphone'
 ];

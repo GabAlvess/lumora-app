@@ -14,7 +14,8 @@ Este é o ponto de entrada para as informações, regras, design, decisões e ro
 | [Visão do jogo](VISAO.md) | Missão, cinco pilares, público, universo e posicionamento. | Síntese da fundação. |
 | [Regras e mecânicas](REGRAS.md) | Sistemas de jogo, economia, convivência e requisitos de segurança. | Diretrizes conceituais e recursos em estudo. |
 | [Design](DESIGN.md) | Experiência, personagens, construção, identidade visual e interface. | Direções iniciais; detalhes a definir. |
-| [Design system](DESIGN-SYSTEM.md) | Tokens, classes SCSS, componentes, ícones e exemplos de integração. | Base de UI v0.1 implementada. |
+| [Design system](DESIGN-SYSTEM.md) | Tokens, classes SCSS, componentes, ícones e exemplos de integração. | Base de UI v0.2 com celular do jogador. |
+| [Celular do jogador](CELULAR.md) | Central de controle, aplicativos, estados e integração. | Componente e demonstração implementados no DS. |
 | [Decisões](DECISOES.md) | Escolhas, contexto e limites de cada definição. | Registro de decisões. |
 | [Roadmap](ROADMAP.md) | Próxima etapa, sequência proposta e possibilidades futuras. | Planejamento sem prazos ou escopo de MVP fechado. |
 | [Documento 02 — Jornada do Jogador](02-JORNADA-DO-JOGADOR.md) | Perguntas sobre a primeira experiência, do site à cidade. | Rascunho a definir. |
