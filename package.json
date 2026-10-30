@@ -8,9 +8,10 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "npm run build:css && node scripts/build-assets.mjs",
-    "build:css": "sass --no-source-map styles/lumora.scss dist/lumora.css && sass --no-source-map --style=compressed styles/lumora.scss dist/lumora.min.css && sass --no-source-map examples/design-system.scss dist/design-system.css",
-    "watch": "sass --watch --no-source-map styles/lumora.scss:dist/lumora.css examples/design-system.scss:dist/design-system.css",
+    "build": "npm run build:css && node scripts/build-assets.mjs && npm run build:pages",
+    "build:css": "sass --no-source-map styles/lumora.scss dist/lumora.css && sass --no-source-map --style=compressed styles/lumora.scss dist/lumora.min.css && sass --no-source-map examples/design-system.scss dist/design-system.css && sass --no-source-map styles/pages/auth.scss dist/auth.css",
+    "build:pages": "node scripts/build-pages.mjs",
+    "watch": "sass --watch --no-source-map styles/lumora.scss:dist/lumora.css examples/design-system.scss:dist/design-system.css styles/pages/auth.scss:dist/auth.css",
     "dev": "npm run build && node scripts/serve.mjs",
     "test": "playwright test"
   },
@@ -19,6 +20,7 @@
     "@fontsource-variable/manrope": "5.3.0",
     "@playwright/test": "1.64.1",
     "lucide-static": "1.64.0",
-    "sass": "1.107.0"
+    "sass": "1.107.0",
+    "simple-icons": "16.36.0"
   }
 }

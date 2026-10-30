@@ -2,7 +2,7 @@
 
 Mundo virtual social online, com foco em criação, comunidade e pertencimento. A visão do jogo está em [DOCS](DOCS/README.md).
 
-O repositório contém a documentação do projeto e a primeira versão do **design system SCSS**. A galeria demonstra os componentes; não implementa autenticação, economia, chat ou outras funcionalidades do jogo.
+O repositório contém a documentação, o **design system SCSS** e as primeiras **telas de login e registro**. As interfaces têm navegação e validação local; autenticação real, cadastro de contas e funcionalidades do jogo ainda não estão integrados.
 
 ## Preparar e compilar
 
@@ -13,21 +13,25 @@ npm ci
 npm run build
 ```
 
-Saída em `dist/`: CSS normal e minificado, sprite SVG com 94 ícones, catálogo de ícones, fonte local Manrope e licenças dos assets. Os arquivos gerados e `node_modules` não são versionados.
+Saída em `dist/`: CSS normal e minificado, sprite SVG com 94 ícones, ícones de provedores, fonte local Manrope, ilustração, páginas de acesso e licenças dos assets. Os arquivos gerados e `node_modules` não são versionados.
 
-## Galeria de componentes
+## Telas e galeria de componentes
 
 ```sh
 npm run dev
 ```
 
-O servidor local usa a porta 4173 e abre a galeria na rota `/`. A interface pode ser vista no navegador do ambiente de desenvolvimento. `PORT` e `HOST` permitem configurar o servidor.
+O servidor local usa a porta 4173. `/` abre o login; `/login` e `/registro` são as telas de acesso, e `/design-system` preserva a galeria de componentes. `PORT` e `HOST` permitem configurar o servidor.
+
+As telas não enviam nem armazenam credenciais e informam a indisponibilidade do serviço ao enviar formulários válidos. Veja [escopo, prévias e integração pendente](DOCS/TELAS-DE-ACESSO.md).
 
 Para recompilar SCSS durante a edição, use outro terminal e atualize a página após a compilação:
 
 ```sh
 npm run watch
 ```
+
+Após alterar os templates ou o JavaScript das telas, execute `npm run build:pages` e atualize a página.
 
 ## Usar nas próximas telas
 
@@ -46,4 +50,4 @@ npm test
 
 Os testes usam Playwright e Chromium. O Chromium do sistema é detectado em `/usr/bin/chromium`, quando presente; também é possível informar `CHROMIUM_PATH`. Em uma máquina sem navegador instalado, instale o navegador do Playwright com `npx playwright install chromium`.
 
-As verificações cobrem carregamento dos assets, estados de formulário, navegação por teclado, foco do diálogo, seleção, busca de ícones, responsividade e auditoria automatizada de acessibilidade. Elas não substituem avaliação manual com tecnologias assistivas.
+As verificações cobrem as telas de acesso e a galeria: carregamento, validação, navegação, senha visível, ausência de envio e armazenamento de credenciais, foco dos diálogos, seleção, busca de ícones, responsividade e auditoria automatizada de acessibilidade. Elas não substituem avaliação manual com tecnologias assistivas nem testes futuros do serviço de autenticação.

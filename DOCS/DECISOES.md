@@ -37,6 +37,18 @@ Adotar uma proposta como **base conceitual** não aprova automaticamente todos o
 - **Documentos relacionados:** [Design system](DESIGN-SYSTEM.md), [Design](DESIGN.md) e [README técnico](../README.md).
 - **Relação com decisões anteriores:** detalha a camada de UI da DEC-002; preserva a fundação original e suas pendências de produto.
 
+## DEC-004 — Implementar as primeiras telas de login e registro
+
+- **Status:** interface implementada; integração de contas pendente.
+- **Origem:** solicitação do responsável pelo projeto de iniciar as telas por login e registro, usando o design system existente.
+- **Decisão:** implementar páginas navegáveis em `/login` e `/registro`, com layout compartilhado, componentes `lm-`, SCSS específico de composição e ilustração gerada para a ambientação. A galeria passa a ter o atalho `/design-system`.
+- **Comportamento:** validação local, primeiro erro com foco, senha visível, recuperação em diálogo e feedback nas opções sociais e informativas. No celular, o formulário tem prioridade e a ilustração não é baixada.
+- **Regras provisórias:** nome de usuário de 3 a 20 caracteres e senha de cadastro com mínimo de 8; essas regras exercitam a interface e não encerram a política de conta ou segurança.
+- **Limites:** sem criação de contas, autenticação, envio de e-mail, OAuth ou sessões simuladas; os formulários não enviam nem armazenam credenciais. Termos, privacidade, faixa etária, consentimentos e proteção de menores continuam pendentes.
+- **Consequências:** templates gerados em build e comportamento de interface separados, mantendo independência de framework; testes da galeria preservados e novas verificações das telas. A integração de contas será uma etapa própria.
+- **Documentos relacionados:** [Telas de acesso](TELAS-DE-ACESSO.md), [Jornada](02-JORNADA-DO-JOGADOR.md) e [README](../README.md).
+- **Relação com decisões anteriores:** aplica a base visual da DEC-003, sem alterar a fundação conceitual.
+
 ## Modelo para novas decisões
 
 Copiar o modelo abaixo e atribuir o próximo identificador disponível.

@@ -21,7 +21,20 @@
 
 **Resultado:** base para compor as próximas telas, documentada em [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). Não substitui a definição da jornada nem implementa as funcionalidades do jogo.
 
-## 2. Próxima etapa — Documento 02: Jornada do Jogador
+## Telas de acesso — Primeira interface
+
+- [x] Compor login e registro com o design system.
+- [x] Criar navegação entre as telas e estados de validação local.
+- [x] Implementar senha visível, diálogo de recuperação e feedback informativo.
+- [x] Adaptar desktop e celular, com ilustração local no desktop.
+- [x] Documentar escopo e registrar prévias das telas.
+- [ ] Definir as políticas finais de conta, termos, privacidade e proteção de menores.
+- [ ] Integrar autenticação, cadastro, confirmação de e-mail, recuperação e sessões.
+- [ ] Definir e integrar os provedores sociais necessários.
+
+**Resultado:** interfaces disponíveis em `/login` e `/registro`; nenhuma conta ou sessão é criada. Ver [Telas de acesso](TELAS-DE-ACESSO.md). A jornada abaixo continua em elaboração; a interface não conclui o cadastro real.
+
+## 2. Em elaboração — Documento 02: Jornada do Jogador
 
 - [ ] Definir como será o site.
 - [ ] Definir cadastro e criação da conta.

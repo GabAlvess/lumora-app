@@ -15,9 +15,10 @@ Este é o ponto de entrada para as informações, regras, design, decisões e ro
 | [Regras e mecânicas](REGRAS.md) | Sistemas de jogo, economia, convivência e requisitos de segurança. | Diretrizes conceituais e recursos em estudo. |
 | [Design](DESIGN.md) | Experiência, personagens, construção, identidade visual e interface. | Direções iniciais; detalhes a definir. |
 | [Design system](DESIGN-SYSTEM.md) | Tokens, classes SCSS, componentes, ícones e exemplos de integração. | Base de UI v0.1 implementada. |
+| [Telas de acesso](TELAS-DE-ACESSO.md) | Login, registro, recuperação e estados de interface. | UI implementada; serviço de autenticação pendente. |
 | [Decisões](DECISOES.md) | Escolhas, contexto e limites de cada definição. | Registro de decisões. |
 | [Roadmap](ROADMAP.md) | Próxima etapa, sequência proposta e possibilidades futuras. | Planejamento sem prazos ou escopo de MVP fechado. |
-| [Documento 02 — Jornada do Jogador](02-JORNADA-DO-JOGADOR.md) | Perguntas sobre a primeira experiência, do site à cidade. | Rascunho a definir. |
+| [Documento 02 — Jornada do Jogador](02-JORNADA-DO-JOGADOR.md) | Primeira experiência, do site à cidade. | Em elaboração; primeiras interfaces de acesso disponíveis. |
 
 ## Como ler os estados
 
@@ -42,6 +43,6 @@ A fundação é um conceito inicial. As funcionalidades citadas não compõem au
 
 A fundação conceitual v0.1 está registrada e organizada por tema. A prioridade inicial é **Web / Desktop**, com futura adaptação móvel considerada desde o design.
 
-A base de interface SCSS e a galeria de componentes estão implementadas conforme a referência visual recebida. Isso não implementa os sistemas do jogo nem define a stack completa da aplicação.
+A base de interface SCSS, a galeria e as primeiras telas de login e registro estão implementadas conforme a referência visual recebida. Autenticação e criação real de contas continuam pendentes. Isso não implementa os demais sistemas do jogo nem define a stack completa da aplicação.
 
-A próxima etapa conceitual indicada pela proposta é detalhar o **Documento 02 — Jornada do Jogador**. Tecnologia do jogo, fluxo de entrada, regras operacionais, escopo do protótipo e critérios de lançamento permanecem a definir.
+O **Documento 02 — Jornada do Jogador** já referencia o início da interface de acesso; a jornada completa ainda precisa ser detalhada. Tecnologia do jogo, regras operacionais, criação do avatar, chegada ao mundo, escopo do protótipo e critérios de lançamento permanecem a definir.

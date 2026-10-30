@@ -1,12 +1,12 @@
 # LUMORA
 ## Documento 02 — Jornada do Jogador
 
-**Status:** rascunho de estrutura; respostas a definir.
+**Status:** em elaboração; interfaces de login e registro implementadas, integração e demais etapas a definir.
 **Origem:** próxima etapa indicada na seção 37 do [Documento 01 — Fundação do Projeto](01-FUNDACAO-DO-PROJETO.md), versão 0.1.
 
 ## Objetivo
 
-Definir a primeira experiência real do jogador, do contato com o site à participação no universo de Lumora. Este documento reúne as perguntas da fundação; não estabelece um fluxo já aprovado ou implementado.
+Definir a primeira experiência real do jogador, do contato com o site à participação no universo de Lumora. Este documento reúne as perguntas da fundação. As definições iniciais de interface estão indicadas abaixo; não representam uma jornada completa ou um serviço de autenticação implementado.
 
 ## Diretrizes que orientam a jornada
 
@@ -20,19 +20,23 @@ Definir a primeira experiência real do jogador, do contato com o site à partic
 
 **Pergunta da fundação:** como será o site?
 
-**Definição:** a definir.
+**Definição inicial de interface:** a entrada atual abre `/login`, com acesso a `/registro`, mantendo o design system e a ambientação ilustrada do universo. A apresentação pública completa do site permanece a definir. Veja [Telas de acesso](TELAS-DE-ACESSO.md).
 
 ## 2. Cadastro e conta
 
 **Perguntas da fundação:** como será o cadastro? Como o jogador cria sua conta?
 
-**Definição:** a definir.
+**Interface implementada:** formulário de registro com nome de usuário, e-mail, senha e confirmação; validação local e navegação para login. O login recebe usuário ou e-mail e senha, com controle de visibilidade e recuperação em diálogo.
+
+**Integração pendente:** criação real da conta, confirmação de e-mail, autenticação, sessões e recuperação. Os provedores sociais são opções visuais sem integração. Termos, privacidade e consentimentos ainda precisam ser definidos; esta interface não representa abertura de contas.
 
 ## 3. Escolha de nome
 
 **Pergunta da fundação:** como escolhe seu nome?
 
-**Definição:** a definir.
+**Regra provisória de interface:** nome de usuário com 3 a 20 caracteres, letras Unicode, números e sublinhado. Disponibilidade, unicidade, nomes reservados e moderação permanecem a definir no serviço de contas.
+
+**Distinção pendente:** este campo identifica a conta na interface inicial; a relação com nomes de personagem e identidades de RPG ainda não foi definida.
 
 ## 4. Criação do personagem
 

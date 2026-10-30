@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/design-system');
   await expect(page.locator('#icon-count')).toHaveText('94 de 94 ícones');
 });
 

@@ -4,7 +4,7 @@
 
 **Referências:** [fundação v0.1](01-FUNDACAO-DO-PROJETO.md), [direção de design](DESIGN.md) e imagem de acesso fornecida pelo responsável pelo projeto nesta conversa. A imagem orienta a linguagem visual; não foi adicionada como asset de distribuição nem define funcionalidades de login social.
 
-**Prévias da galeria:** [desktop](assets/design-system-desktop.png) e [celular](assets/design-system-mobile.png). Para interagir com todos os componentes, execute `npm run dev` conforme o [README](../README.md).
+**Prévias da galeria:** [desktop](assets/design-system-desktop.png) e [celular](assets/design-system-mobile.png). Para interagir com todos os componentes, execute `npm run dev` e use a rota `/design-system`, conforme o [README](../README.md). As primeiras composições de produto estão em [Telas de acesso](TELAS-DE-ACESSO.md).
 
 ## Direção da interface
 
