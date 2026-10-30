@@ -44,6 +44,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
 .ds-skeleton-line--short { width: 55%; }
 .ds-icon-search { max-width: 20rem; }
 .ds-demo-toolbar { width: fit-content; }
+.ds-phone-scene { display: flex; flex-direction: column; justify-content: space-between; gap: var(--lm-space-6); min-height: 28rem; padding: var(--lm-space-6); border: 1px solid var(--lm-forest-200); border-radius: var(--lm-radius-lg); background: var(--lm-primary-soft); }
+.ds-phone-scene__world { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: var(--lm-space-4); padding-block: var(--lm-space-6); color: var(--lm-primary); }
+.ds-phone-scene__world > .lm-icon { width: 4rem; height: 4rem; stroke-width: 1; }
+.ds-phone-anatomy { display: grid; gap: var(--lm-space-4); padding-inline-start: var(--lm-space-5); }
+.ds-footer { padding-block-end: 5rem; }
 
 @media (max-width: 74rem) {
   .ds-layout { grid-template-columns: 13rem minmax(0, 1fr); }

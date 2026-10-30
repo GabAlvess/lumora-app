@@ -81,3 +81,7 @@ Novas referências e materiais devem registrar origem, finalidade, licença quan
 ## Responsáveis
 
 Designers e responsáveis por cada área: a definir.
+
+## Celular do jogador
+
+O celular reúne amigos, quartos, personalização do personagem, loja e todas as configurações disponíveis no jogo. O acionador e o aparelho ficam no canto inferior direito. O componente integra o DS flat existente; a galeria demonstra sua navegação com dados fictícios. Ver [Celular do jogador](CELULAR.md) e [Design system](DESIGN-SYSTEM.md).
