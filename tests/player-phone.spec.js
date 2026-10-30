@@ -8,7 +8,11 @@ test.beforeEach(async ({ page }) => {
 
 const phone = page => page.locator('#phone-dialog');
 const app = (page, name) => phone(page).getByRole('button', { name, exact: true });
-const open = async page => page.locator('#phone-launcher').click();
+const settle = locator => locator.evaluate(element => Promise.allSettled(element.getAnimations().map(animation => animation.finished)));
+const open = async page => {
+  await page.locator('#phone-launcher').click();
+  await settle(phone(page));
+};
 
 test('os cinco aplicativos navegam dentro do aparelho, sem mudar a URL', async ({ page }) => {
   const url = page.url();
@@ -141,7 +145,9 @@ test('API emite eventos, rejeita rotas desconhecidas e libera controles ao desmo
     const unknown = controller.navigate('missing');
     controller.navigate('other');
     const current = controller.currentView;
+    await Promise.allSettled(root.querySelector('dialog').getAnimations().map(animation => animation.finished));
     controller.close();
+    await Promise.allSettled(root.querySelector('dialog').getAnimations().map(animation => animation.finished));
     controller.open();
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     const reopened = root.querySelector('dialog').open && root.querySelector('[data-phone-open]').getAttribute('aria-expanded') === 'true';
@@ -153,4 +159,91 @@ test('API emite eventos, rejeita rotas desconhecidas e libera controles ao desmo
     return { unknown, current, reopened, stillClosed, afterDestroy, events };
   });
   expect(result).toEqual({ unknown: false, current: 'other', reopened: true, stillClosed: true, afterDestroy: false, events: [['open', 'home'], ['navigate', 'other'], ['close', 'other'], ['open', 'other'], ['close', 'other']] });
+});
+
+test('o celular sobe ao entrar e só fecha depois de descer para fora da tela', async ({ page }) => {
+  const entry = await page.evaluate(() => {
+    document.querySelector('#phone-launcher').focus();
+    document.querySelector('#phone-launcher').click();
+    const dialog = document.querySelector('#phone-dialog');
+    const animation = dialog.getAnimations().find(item => item.transitionProperty === 'transform');
+    animation.pause();
+    animation.currentTime = 0;
+    const start = dialog.getBoundingClientRect().top;
+    animation.currentTime = Number(animation.effect.getTiming().duration) / 2;
+    const middle = dialog.getBoundingClientRect().top;
+    animation.finish();
+    return { start, middle, end: dialog.getBoundingClientRect().top, height: innerHeight };
+  });
+  expect(entry.start).toBeGreaterThanOrEqual(entry.height);
+  expect(entry.middle).toBeLessThan(entry.start);
+  expect(entry.middle).toBeGreaterThan(entry.end);
+  const exit = await page.evaluate(() => {
+    const root = document.querySelector('#player-phone');
+    window.phoneClosed = false;
+    root.addEventListener('lm:phone-close', () => { window.phoneClosed = true; }, { once: true });
+    const dialog = root.querySelector('dialog');
+    dialog.querySelector('[data-phone-close]').click();
+    const animation = dialog.getAnimations().find(item => item.transitionProperty === 'transform');
+    animation.pause();
+    animation.currentTime = 0;
+    const start = dialog.getBoundingClientRect().top;
+    animation.currentTime = Number(animation.effect.getTiming().duration) / 2;
+    const middle = dialog.getBoundingClientRect().top;
+    const during = { open: dialog.open, announcedClose: window.phoneClosed, expanded: root.querySelector('[data-phone-open]').getAttribute('aria-expanded'), focusInside: dialog.contains(document.activeElement) };
+    animation.finish();
+    return { start, middle, end: dialog.getBoundingClientRect().top, height: innerHeight, during };
+  });
+  expect(exit.middle).toBeGreaterThan(exit.start);
+  expect(exit.middle).toBeLessThan(exit.end);
+  expect(exit.end).toBeGreaterThanOrEqual(exit.height);
+  expect(exit.during).toEqual({ open: true, announcedClose: false, expanded: 'true', focusInside: true });
+  await expect(phone(page)).toBeHidden();
+  await expect(page.locator('#phone-launcher')).toBeFocused();
+  expect(await page.evaluate(() => window.phoneClosed)).toBe(true);
+});
+
+test('movimento reduzido abre e fecha sem transições', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await open(page);
+  expect(await phone(page).evaluate(element => element.getAnimations().length)).toBe(0);
+  const immediatelyClosed = await phone(page).evaluate(element => {
+    element.querySelector('[data-phone-close]').click();
+    return !element.open;
+  });
+  expect(immediatelyClosed).toBe(true);
+  await expect(page.locator('#phone-launcher')).toBeFocused();
+});
+
+test('reabrir durante a saída reverte o movimento e desmontar fecha imediatamente', async ({ page }) => {
+  const result = await page.evaluate(async () => {
+    const { initPlayerPhone } = await import('/dist/player-phone.mjs');
+    const root = document.createElement('div');
+    root.innerHTML = '<button data-phone-open>Fixture</button><dialog class="lm-phone" aria-label="Fixture"><h2 data-phone-title tabindex="-1"></h2><button data-phone-close>Fechar</button><section data-phone-view="home"></section></dialog>';
+    document.body.append(root);
+    const controller = initPlayerPhone(root);
+    const dialog = root.querySelector('dialog');
+    let closeEvents = 0;
+    root.addEventListener('lm:phone-close', () => closeEvents++);
+    controller.open();
+    await Promise.allSettled(dialog.getAnimations().map(animation => animation.finished));
+    controller.close();
+    controller.close();
+    const animation = dialog.getAnimations()[0];
+    animation.pause();
+    animation.currentTime = Number(animation.effect.getTiming().duration) / 2;
+    const interruptedY = dialog.getBoundingClientRect().top;
+    controller.open();
+    const resumedY = dialog.getBoundingClientRect().top;
+    await Promise.allSettled(dialog.getAnimations().map(animation => animation.finished));
+    const reopened = { open: dialog.open, closeEvents };
+    controller.close();
+    controller.destroy();
+    const destroyed = { open: dialog.open, closeEvents };
+    root.remove();
+    return { interruptedY, resumedY, reopened, destroyed };
+  });
+  expect(result.resumedY).toBeCloseTo(result.interruptedY, 0);
+  expect(result.reopened).toEqual({ open: true, closeEvents: 0 });
+  expect(result.destroyed).toEqual({ open: false, closeEvents: 1 });
 });

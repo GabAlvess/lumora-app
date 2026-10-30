@@ -12,6 +12,7 @@
 .lm-phone {
   --lm-phone-width: 23rem;
   --lm-phone-height: 40rem;
+  --lm-phone-duration: 320ms;
   position: fixed;
   inset: auto;
   inset-inline-end: max(var(--lm-space-4), env(safe-area-inset-right));
@@ -28,6 +29,12 @@
   background: var(--lm-primary);
   color: var(--lm-text);
   box-shadow: var(--lm-shadow-float);
+  transform: translateY(0);
+  transition: transform var(--lm-phone-duration) cubic-bezier(.22, 1, .36, 1);
+
+  &[data-phone-entering], &[data-phone-closing] {
+    transform: translateY(calc(100% + max(var(--lm-space-4), env(safe-area-inset-bottom)) + var(--lm-space-4)));
+  }
 
   &[open] { display: flex; flex-direction: column; }
   &::backdrop { background: transparent; }
@@ -61,6 +68,10 @@
   &__category > legend { padding: 0; margin-block-end: var(--lm-space-3); font-weight: var(--lm-weight-semibold); }
   &__category .lm-choice { display: flex; justify-content: space-between; width: 100%; }
   &__settings-link { display: flex; align-items: center; justify-content: space-between; gap: var(--lm-space-3); min-height: var(--lm-control-md); color: var(--lm-text); text-decoration: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lm-phone { transition: none; }
 }
 
 @media (max-width: 35.99rem) {
