@@ -13,7 +13,7 @@ npm ci
 npm run build
 ```
 
-Saída em `dist/`: CSS normal e minificado, sprite SVG com 94 ícones, ícones de provedores, fonte local Manrope, ilustração, páginas de acesso e licenças dos assets. Os arquivos gerados e `node_modules` não são versionados.
+Saída em `dist/`: CSS normal e minificado, sprite SVG com 95 ícones, catálogo, ícones de provedores, fonte local Manrope, ilustração, páginas de acesso, controlador opcional `player-phone.mjs` e licenças dos assets. Os arquivos gerados e `node_modules` não são versionados.
 
 ## Telas e galeria de componentes
 
@@ -39,6 +39,7 @@ Após alterar os templates ou o JavaScript das telas, execute `npm run build:pag
 - Tokens e mixins: [styles/abstracts](styles/abstracts).
 - Componentes: [styles/components](styles/components).
 - Convenções, exemplos e catálogo de classes: [DOCS/DESIGN-SYSTEM.md](DOCS/DESIGN-SYSTEM.md).
+- Celular do jogador: [componente, API e integração](DOCS/CELULAR.md).
 - Exemplo executável: [examples/design-system.html](examples/design-system.html).
 
 ## Validar

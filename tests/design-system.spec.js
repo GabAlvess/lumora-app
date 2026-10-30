@@ -3,14 +3,14 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/design-system');
-  await expect(page.locator('#icon-count')).toHaveText('94 de 94 ícones');
+  await expect(page.locator('#icon-count')).toHaveText('95 de 95 ícones');
 });
 
 test('assets locais, CSS e catálogo carregam sem erros de execução', async ({ page, request }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.reload();
-  await expect(page.locator('#icon-grid .ds-icon')).toHaveCount(94);
+  await expect(page.locator('#icon-grid .ds-icon')).toHaveCount(95);
   await page.evaluate(() => document.fonts.ready);
   expect(await page.evaluate(() => document.fonts.check('500 16px Manrope'))).toBe(true);
   for (const path of ['/dist/lumora.css', '/dist/lumora.min.css', '/dist/lumora-icons.svg', '/dist/fonts/manrope-latin-wght-normal.woff2']) {
@@ -91,7 +91,7 @@ test('busca de ícones, escolhas e menus funcionam', async ({ page }) => {
   await search.fill('icone-inexistente');
   await expect(page.locator('#icon-empty')).toBeVisible();
   await search.clear();
-  await expect(page.locator('#icon-grid .ds-icon')).toHaveCount(94);
+  await expect(page.locator('#icon-grid .ds-icon')).toHaveCount(95);
   await page.getByRole('switch', { name: 'Receber notificações' }).uncheck();
   await expect(page.getByRole('switch', { name: 'Receber notificações' })).not.toBeChecked();
   await page.getByRole('button', { name: 'Luminária', exact: true }).click();

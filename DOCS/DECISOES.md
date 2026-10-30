@@ -37,7 +37,18 @@ Adotar uma proposta como **base conceitual** não aprova automaticamente todos o
 - **Documentos relacionados:** [Design system](DESIGN-SYSTEM.md), [Design](DESIGN.md) e [README técnico](../README.md).
 - **Relação com decisões anteriores:** detalha a camada de UI da DEC-002; preserva a fundação original e suas pendências de produto.
 
-## DEC-004 — Implementar as primeiras telas de login e registro
+## DEC-004 — Celular como central de controle do jogador
+
+- **Status:** requisito solicitado; componente e demonstração implementados no DS.
+- **Data:** 2026-10-29.
+- **Origem:** solicitação do responsável pelo projeto nesta conversa.
+- **Decisão:** reunir amigos, quartos, personalização do personagem, loja e configurações em um celular no canto inferior direito da tela, integrado ao design system e à sua galeria.
+- **Implementação:** SCSS com os tokens existentes, controlador JavaScript opcional independente de framework e cinco telas de demonstração. A página do DS inclui contexto, anatomia e estados. O diálogo modal mantém o cenário visível e impede a interação simultânea com o fundo.
+- **Consequências:** novas funções de controle devem integrar os aplicativos do celular. O jogo precisa suspender seus comandos ao receber os eventos de abertura e retomá-los ao fechar.
+- **Limites:** dados fictícios e estado somente em memória. As opções ilustradas não definem a economia, o personagem final ou as configurações reais do jogo. Os serviços e controles da engine ainda precisam ser conectados.
+- **Documentos relacionados:** [Celular do jogador](CELULAR.md), [Design system](DESIGN-SYSTEM.md) e [Design](DESIGN.md).
+
+## DEC-005 — Implementar as primeiras telas de login e registro
 
 - **Status:** interface implementada; integração de contas pendente.
 - **Origem:** solicitação do responsável pelo projeto de iniciar as telas por login e registro, usando o design system existente.

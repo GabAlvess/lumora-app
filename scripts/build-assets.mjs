@@ -8,6 +8,7 @@ const dist = new URL('dist/', root);
 await mkdir(new URL('fonts/', dist), { recursive: true });
 await mkdir(new URL('licenses/', dist), { recursive: true });
 await mkdir(new URL('images/', dist), { recursive: true });
+await copyFile(new URL('scripts/player-phone.mjs', root), new URL('player-phone.mjs', dist));
 
 const symbols = [];
 for (const name of icons) {
