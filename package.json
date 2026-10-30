@@ -1,0 +1,24 @@
+{
+  "name": "lumora-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tokens e componentes SCSS do Lumora, independentes de framework.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "npm run build:css && node scripts/build-assets.mjs",
+    "build:css": "sass --no-source-map styles/lumora.scss dist/lumora.css && sass --no-source-map --style=compressed styles/lumora.scss dist/lumora.min.css && sass --no-source-map examples/design-system.scss dist/design-system.css",
+    "watch": "sass --watch --no-source-map styles/lumora.scss:dist/lumora.css examples/design-system.scss:dist/design-system.css",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@playwright/test": "1.64.1",
+    "lucide-static": "1.64.0",
+    "sass": "1.107.0"
+  }
+}

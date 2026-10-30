@@ -1,0 +1,29 @@
+@use '../abstracts/tokens';
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('#{tokens.$font-path}manrope-latin-wght-normal.woff2') format('woff2');
+}
+
+.lm-display { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 500; letter-spacing: -.06em; line-height: 1.08; }
+.lm-heading { font-weight: var(--lm-weight-semibold); line-height: var(--lm-leading-tight); letter-spacing: -.035em; }
+.lm-heading--xl { font-size: var(--lm-text-3xl); }
+.lm-heading--lg { font-size: var(--lm-text-2xl); }
+.lm-heading--md { font-size: var(--lm-text-xl); }
+.lm-heading--sm { font-size: var(--lm-text-lg); }
+.lm-body { font-size: var(--lm-text-md); line-height: var(--lm-leading-body); }
+.lm-caption { font-size: var(--lm-text-sm); color: var(--lm-text-secondary); }
+.lm-eyebrow { font-size: var(--lm-text-xs); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.lm-link {
+  color: var(--lm-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: .25em;
+  &:hover { text-decoration-color: currentColor; }
+}
+.lm-brand { display: inline-flex; align-items: center; gap: .6rem; color: var(--lm-primary); text-decoration: none; }
+.lm-brand__wordmark { font-size: 1.5rem; line-height: 1; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; }

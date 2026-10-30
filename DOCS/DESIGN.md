@@ -1,6 +1,12 @@
 # Design
 
-**Base:** [Documento 01 — Fundação do Projeto](01-FUNDACAO-DO-PROJETO.md), versão 0.1, especialmente seções 8 a 14, 28, 29 e 32. São diretrizes e direções iniciais; não constituem um guia de arte final nem telas aprovadas.
+**Base:** [Documento 01 — Fundação do Projeto](01-FUNDACAO-DO-PROJETO.md), versão 0.1, especialmente seções 8 a 14, 28, 29 e 32, e referência visual de interface fornecida pelo responsável pelo projeto. A UI tem uma base SCSS inicial; arte do mundo, avatares e telas de produto ainda precisam ser detalhados.
+
+## Design system de interface
+
+A [base de UI v0.1](DESIGN-SYSTEM.md) implementa a direção solicitada: moderna, flat, com uso frequente de ícones, verde profundo, fundo creme, superfícies claras, bordas finas e cantos suaves. Ela inclui tokens, classes de componentes, estados e uma galeria de referência.
+
+O código é independente de framework e usa Manrope local e 94 ícones SVG Lucide. A galeria demonstra componentes; não determina o fluxo real de cadastro ou acesso e não implementa sistemas do jogo.
 
 ## Experiência do jogador
 
@@ -26,9 +32,9 @@ Essa direção ainda precisa de exploração e validação visual. Não há defi
 
 O **verde** é uma das principais cores previstas, associado a vida, natureza, energia, crescimento e renovação.
 
-Cores complementares **consideradas**: azul-petróleo, creme, dourado suave, lilás e tons escuros. Não há códigos de cor ou paleta final aprovados.
+Cores complementares **consideradas na fundação**: azul-petróleo, creme, dourado suave, lilás e tons escuros. A primeira paleta de interface está definida nos [tokens do design system](DESIGN-SYSTEM.md), incluindo verde `#244C3B`, creme `#F7F6F2` e branco. É uma base de implementação sujeita a evolução; não fecha a paleta artística do universo.
 
-A identidade deve combinar fantasia, natureza, tecnologia, comunidade e modernidade. Logotipo, tipografia, iconografia e regras de aplicação ainda serão definidos.
+A identidade deve combinar fantasia, natureza, tecnologia, comunidade e modernidade. A UI usa Manrope e ícones Lucide de contorno. Logotipo oficial e manual completo de aplicação da marca permanecem a definir.
 
 ## Personagens, cenários e objetos
 
@@ -60,7 +66,7 @@ A fundação não especifica direção musical, efeitos sonoros ou feedback audi
 
 ## Acessibilidade
 
-A fundação ainda não estabelece critérios específicos de acessibilidade. Legibilidade, contraste, controles, alternativas a sinais visuais ou sonoros e opções de conforto permanecem como pontos a detalhar; não são requisitos já validados.
+A fundação ainda não estabelece uma política completa de acessibilidade. A base de UI já inclui foco visível, controles nativos, padrões de rótulos e erros, redução de movimento e verificações automatizadas. Testes manuais com tecnologias assistivas, requisitos de acessibilidade do mundo e alternativas a sinais visuais ou sonoros continuam a detalhar. Ver limites em [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md).
 
 ## Segurança na experiência
 
@@ -70,7 +76,7 @@ Denúncia, bloqueio, silenciamento e regras acessíveis precisam ser considerado
 
 O Documento 01 é a referência conceitual atual. Habbo e mundos virtuais clássicos aparecem como contexto do gênero; a proposta exige identidade visual própria.
 
-Novas referências e materiais devem registrar origem, finalidade, licença quando aplicável e status de aprovação. Ainda não há assets, estudos visuais ou telas aprovadas registrados nestas docs.
+Novas referências e materiais devem registrar origem, finalidade, licença quando aplicável e status de aprovação. A referência de acesso recebida orientou o design system; fontes e ícones locais têm suas licenças preservadas no build. A galeria e sua assinatura visual são demonstrações, não telas de produto ou logotipo final aprovados.
 
 ## Responsáveis
 

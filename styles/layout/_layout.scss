@@ -1,0 +1,14 @@
+@use '../abstracts' as a;
+
+.lm-container { width: min(100% - 2rem, var(--lm-content-max)); margin-inline: auto; }
+.lm-stack { --lm-gap: var(--lm-space-4); display: flex; flex-direction: column; gap: var(--lm-gap); }
+.lm-cluster { --lm-gap: var(--lm-space-3); display: flex; flex-wrap: wrap; align-items: center; gap: var(--lm-gap); }
+.lm-between { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--lm-space-3); }
+.lm-grid { --lm-gap: var(--lm-space-4); display: grid; gap: var(--lm-gap); grid-template-columns: repeat(var(--lm-columns, 1), minmax(0, 1fr)); }
+.lm-grid--auto { grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--lm-grid-min, 16rem)), 1fr)); }
+.lm-divider { width: 100%; height: 1px; margin: 0; border: 0; background: var(--lm-border); }
+.lm-divider-label { display: flex; align-items: center; gap: 1rem; color: var(--lm-text-muted); font-size: var(--lm-text-sm); }
+.lm-divider-label::before, .lm-divider-label::after { content: ''; flex: 1; height: 1px; background: var(--lm-border); }
+.lm-shell { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; }
+.lm-split { display: grid; gap: var(--lm-space-6); }
+@include a.from('md') { .lm-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }

@@ -1,0 +1,17 @@
+@use '../abstracts' as a;
+
+.lm-dialog { width: min(32rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); margin: auto; padding: 0; overflow: auto; overscroll-behavior: contain; border: 1px solid var(--lm-border); border-radius: var(--lm-radius-xl); background: var(--lm-surface); color: var(--lm-text); box-shadow: var(--lm-shadow-float); }
+.lm-dialog::backdrop { background: var(--lm-overlay); }
+.lm-dialog--wide { width: min(48rem, calc(100% - 2rem)); }
+.lm-dialog__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-block-end: 1px solid var(--lm-border); }
+.lm-dialog__body { padding: 1.5rem; }
+.lm-dialog__footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .75rem; padding: 1rem 1.5rem; border-block-start: 1px solid var(--lm-border); }
+.lm-dropdown { position: relative; display: inline-block; }
+.lm-dropdown > summary { list-style: none; }
+.lm-dropdown > summary::-webkit-details-marker { display: none; }
+.lm-dropdown__menu { position: absolute; inset-block-start: calc(100% + .5rem); inset-inline-end: 0; z-index: var(--lm-z-popover); display: grid; gap: .25rem; width: min(15rem, calc(100vw - 2rem)); padding: .5rem; border: 1px solid var(--lm-border); border-radius: var(--lm-radius-md); background: var(--lm-surface); box-shadow: var(--lm-shadow-float); }
+.lm-dropdown__item { @include a.interactive; display: flex; align-items: center; gap: .75rem; width: 100%; min-height: 2.75rem; padding: .65rem .75rem; border: 0; border-radius: var(--lm-radius-sm); background: transparent; color: var(--lm-text); font: inherit; font-size: var(--lm-text-sm); text-align: start; text-decoration: none; cursor: pointer; }
+.lm-dropdown__item:hover:not(:disabled) { background: var(--lm-surface-subtle); }
+.lm-dropdown__item--danger { color: var(--lm-danger); }
+.lm-tooltip-anchor { position: relative; display: inline-flex; }
+.lm-tooltip { position: absolute; inset-block-end: calc(100% + .5rem); inset-inline-start: 50%; transform: translateX(-50%); z-index: var(--lm-z-popover); width: max-content; max-width: min(15rem, 80vw); padding: .5rem .75rem; border-radius: var(--lm-radius-sm); background: var(--lm-forest-900); color: var(--lm-on-primary); font-size: var(--lm-text-xs); font-weight: 500; line-height: 1.5; text-align: center; }

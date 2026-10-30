@@ -1,0 +1,17 @@
+@use '../abstracts' as a;
+
+// Presentation only: these classes do not implement game, economy or chat rules.
+.lm-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; padding: .5rem; border: 1px solid var(--lm-border); border-radius: var(--lm-radius-lg); background: var(--lm-surface); }
+.lm-currency { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.5rem; padding: .5rem .875rem; border: 1px solid var(--lm-border); border-radius: var(--lm-radius-pill); background: var(--lm-surface); font-size: var(--lm-text-sm); font-weight: 700; font-variant-numeric: tabular-nums; }
+.lm-currency > .lm-icon { color: var(--lm-warning); }
+.lm-currency--accent > .lm-icon { color: var(--lm-accent); }
+.lm-item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr)); gap: .75rem; }
+.lm-item { @include a.interactive; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: .5rem; min-width: 0; min-height: 6rem; padding: .75rem; border: 1px solid var(--lm-border-strong); border-radius: var(--lm-radius-md); background: var(--lm-surface); color: var(--lm-text-secondary); font: inherit; font-size: var(--lm-text-xs); cursor: pointer; }
+.lm-item:hover:not(:disabled) { background: var(--lm-surface-subtle); }
+.lm-item[aria-pressed='true'] { border-color: var(--lm-primary); background: var(--lm-primary-soft); color: var(--lm-primary); }
+.lm-message { display: flex; align-items: flex-end; gap: .75rem; max-width: min(100%, 32rem); }
+.lm-message__bubble { min-width: 0; padding: .75rem 1rem; border-radius: var(--lm-radius-md) var(--lm-radius-md) var(--lm-radius-md) var(--lm-radius-xs); background: var(--lm-surface-subtle); overflow-wrap: anywhere; font-size: var(--lm-text-sm); }
+.lm-message__author { display: block; margin-block-end: .25rem; font-weight: 700; color: var(--lm-primary); }
+.lm-message__time { display: block; margin-block-start: .25rem; color: var(--lm-text-secondary); font-size: var(--lm-text-xs); }
+.lm-message--self { align-self: flex-end; flex-direction: row-reverse; }
+.lm-message--self .lm-message__bubble { background: var(--lm-primary-soft); border-radius: var(--lm-radius-md) var(--lm-radius-md) var(--lm-radius-xs) var(--lm-radius-md); }

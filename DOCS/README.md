@@ -14,6 +14,7 @@ Este é o ponto de entrada para as informações, regras, design, decisões e ro
 | [Visão do jogo](VISAO.md) | Missão, cinco pilares, público, universo e posicionamento. | Síntese da fundação. |
 | [Regras e mecânicas](REGRAS.md) | Sistemas de jogo, economia, convivência e requisitos de segurança. | Diretrizes conceituais e recursos em estudo. |
 | [Design](DESIGN.md) | Experiência, personagens, construção, identidade visual e interface. | Direções iniciais; detalhes a definir. |
+| [Design system](DESIGN-SYSTEM.md) | Tokens, classes SCSS, componentes, ícones e exemplos de integração. | Base de UI v0.1 implementada. |
 | [Decisões](DECISOES.md) | Escolhas, contexto e limites de cada definição. | Registro de decisões. |
 | [Roadmap](ROADMAP.md) | Próxima etapa, sequência proposta e possibilidades futuras. | Planejamento sem prazos ou escopo de MVP fechado. |
 | [Documento 02 — Jornada do Jogador](02-JORNADA-DO-JOGADOR.md) | Perguntas sobre a primeira experiência, do site à cidade. | Rascunho a definir. |
@@ -41,4 +42,6 @@ A fundação é um conceito inicial. As funcionalidades citadas não compõem au
 
 A fundação conceitual v0.1 está registrada e organizada por tema. A prioridade inicial é **Web / Desktop**, com futura adaptação móvel considerada desde o design.
 
-A próxima etapa indicada pela proposta é detalhar o **Documento 02 — Jornada do Jogador**. Tecnologia, fluxo de entrada, regras operacionais, escopo do protótipo e critérios de lançamento permanecem a definir. Esta documentação não indica que os sistemas já foram implementados.
+A base de interface SCSS e a galeria de componentes estão implementadas conforme a referência visual recebida. Isso não implementa os sistemas do jogo nem define a stack completa da aplicação.
+
+A próxima etapa conceitual indicada pela proposta é detalhar o **Documento 02 — Jornada do Jogador**. Tecnologia do jogo, fluxo de entrada, regras operacionais, escopo do protótipo e critérios de lançamento permanecem a definir.

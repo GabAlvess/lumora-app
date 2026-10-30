@@ -1,0 +1,30 @@
+@use '../abstracts' as a;
+
+.lm-avatar { position: relative; display: inline-flex; align-items: center; justify-content: center; width: var(--lm-avatar-size, 2.75rem); height: var(--lm-avatar-size, 2.75rem); flex: 0 0 auto; border: 1px solid var(--lm-border); border-radius: 50%; background: var(--lm-primary-soft); color: var(--lm-primary); font-size: calc(var(--lm-avatar-size, 2.75rem) * .32); font-weight: 700; vertical-align: middle; }
+.lm-avatar > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.lm-avatar--sm { --lm-avatar-size: 2rem; }
+.lm-avatar--lg { --lm-avatar-size: 3.5rem; }
+.lm-avatar--xl { --lm-avatar-size: 5rem; }
+.lm-avatar--square { border-radius: var(--lm-radius-md); }
+.lm-avatar--accent { background: var(--lm-accent-soft); color: var(--lm-accent); }
+.lm-avatar--warm { background: var(--lm-warning-soft); color: var(--lm-warning); }
+.lm-avatar-group { display: inline-flex; padding-inline-start: .5rem; }
+.lm-avatar-group .lm-avatar { margin-inline-start: -.5rem; border: 2px solid var(--lm-surface); }
+.lm-avatar__status { position: absolute; inset-inline-end: 0; inset-block-end: 0; width: .75rem; height: .75rem; border: 2px solid var(--lm-surface); border-radius: 50%; background: var(--lm-success); }
+.lm-status { display: inline-flex; align-items: center; gap: .375rem; color: var(--lm-text-secondary); font-size: var(--lm-text-xs); }
+.lm-status::before { content: ''; width: .5rem; height: .5rem; border-radius: 50%; background: var(--lm-success); }
+.lm-status--away::before { background: var(--lm-warning); }
+.lm-status--offline::before { background: var(--lm-text-muted); }
+.lm-list { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.lm-list__item { display: flex; align-items: center; gap: .875rem; min-width: 0; padding: 1rem; border-block-end: 1px solid var(--lm-border); }
+.lm-list__item:last-child { border-block-end: 0; }
+.lm-list__content { flex: 1; min-width: 0; }
+.lm-table { width: 100%; border-collapse: collapse; text-align: start; font-size: var(--lm-text-sm); }
+.lm-table :is(th, td) { padding: 1rem; border-block-end: 1px solid var(--lm-border); text-align: start; }
+.lm-table th { color: var(--lm-text-secondary); background: var(--lm-surface-subtle); font-size: var(--lm-text-xs); font-weight: 600; }
+.lm-table tbody tr:hover { background: var(--lm-surface-subtle); }
+.lm-table tbody tr:last-child td { border-block-end: 0; }
+.lm-table caption { padding: 1rem; text-align: start; font-weight: 600; }
+.lm-stat { display: grid; gap: .375rem; padding: 1.5rem; border: 1px solid var(--lm-border); border-radius: var(--lm-radius-lg); background: var(--lm-surface); }
+.lm-stat__label { color: var(--lm-text-secondary); font-size: var(--lm-text-sm); }
+.lm-stat__value { font-size: var(--lm-text-2xl); font-weight: 600; letter-spacing: -.04em; line-height: 1.2; font-variant-numeric: tabular-nums; }

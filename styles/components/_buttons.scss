@@ -1,0 +1,40 @@
+@use '../abstracts' as a;
+
+.lm-button {
+  @include a.interactive;
+  --lm-button-bg: var(--lm-primary);
+  --lm-button-fg: var(--lm-on-primary);
+  --lm-button-border: transparent;
+  --lm-button-hover: var(--lm-primary-hover);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lm-space-2);
+  min-height: var(--lm-control-md);
+  padding: .65rem 1.25rem;
+  border: 1px solid var(--lm-button-border);
+  border-radius: var(--lm-radius-md);
+  background: var(--lm-button-bg);
+  color: var(--lm-button-fg);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover:not(:disabled, [aria-disabled='true']) { background: var(--lm-button-hover); }
+  &:active:not(:disabled, [aria-disabled='true']) { filter: brightness(.95); }
+  &[aria-busy='true'] { cursor: progress; }
+}
+.lm-button--primary { --lm-button-bg: var(--lm-primary); }
+.lm-button--secondary { --lm-button-bg: var(--lm-primary-soft); --lm-button-fg: var(--lm-primary); --lm-button-hover: var(--lm-forest-200); }
+.lm-button--outline { --lm-button-bg: var(--lm-surface); --lm-button-fg: var(--lm-primary); --lm-button-border: var(--lm-border-strong); --lm-button-hover: var(--lm-surface-subtle); }
+.lm-button--ghost { --lm-button-bg: transparent; --lm-button-fg: var(--lm-text-secondary); --lm-button-hover: var(--lm-surface-hover); }
+.lm-button--danger { --lm-button-bg: var(--lm-danger); --lm-button-hover: #932830; }
+.lm-button--sm { min-height: var(--lm-control-sm); padding: .4rem .8rem; font-size: var(--lm-text-sm); border-radius: var(--lm-radius-sm); }
+.lm-button--lg { min-height: var(--lm-control-lg); padding-inline: 1.75rem; font-size: var(--lm-text-lg); }
+.lm-button--block { display: flex; width: 100%; }
+.lm-button--icon { width: var(--lm-control-md); height: var(--lm-control-md); padding: 0; flex: 0 0 auto; }
+.lm-button--icon.lm-button--sm { width: var(--lm-control-sm); height: var(--lm-control-sm); }
+.lm-button--icon.lm-button--lg { width: var(--lm-control-lg); height: var(--lm-control-lg); }
+.lm-button-group { display: inline-flex; flex-wrap: wrap; gap: .5rem; }

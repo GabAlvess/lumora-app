@@ -1,0 +1,50 @@
+@use '../abstracts' as a;
+
+.lm-field { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.lm-label { font-size: var(--lm-text-sm); font-weight: 600; color: var(--lm-text); }
+.lm-field__hint { font-size: var(--lm-text-xs); color: var(--lm-text-secondary); }
+.lm-field__error { display: flex; align-items: center; gap: .375rem; font-size: var(--lm-text-xs); color: var(--lm-danger); }
+.lm-input, .lm-select, .lm-textarea {
+  @include a.interactive;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--lm-control-md);
+  padding: .75rem 1rem;
+  border: 1px solid var(--lm-border-control);
+  border-radius: var(--lm-radius-md);
+  background: var(--lm-surface);
+  color: var(--lm-text);
+  font: inherit;
+  line-height: 1.5;
+  &::placeholder { color: var(--lm-text-muted); opacity: 1; }
+  &:hover:not(:disabled) { border-color: var(--lm-primary); }
+  &:focus { border-color: var(--lm-primary); }
+  &[aria-invalid='true'] { border-color: var(--lm-danger); }
+  &:disabled { background: var(--lm-surface-subtle); }
+  &[readonly] { background: var(--lm-surface-subtle); }
+}
+.lm-select { cursor: pointer; padding-inline-end: 1.75rem; }
+.lm-input, .lm-select { height: var(--lm-control-md); padding-block: .6875rem; }
+.lm-textarea { display: block; min-height: 7.5rem; resize: vertical; }
+.lm-control {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-height: var(--lm-control-md);
+  padding-inline: 1rem;
+  border: 1px solid var(--lm-border-control);
+  border-radius: var(--lm-radius-md);
+  background: var(--lm-surface);
+  color: var(--lm-text-secondary);
+  transition: border-color var(--lm-duration-fast);
+  &:hover, &:focus-within { border-color: var(--lm-primary); }
+  &:has(:focus-visible) { @include a.focus-ring; }
+  &:has([aria-invalid='true']) { border-color: var(--lm-danger); }
+  &:has(:disabled) { opacity: .48; background: var(--lm-surface-subtle); }
+  .lm-input { height: calc(var(--lm-control-md) - 2px); min-height: calc(var(--lm-control-md) - 2px); padding-inline: 0; border: 0; border-radius: 0; background: transparent; opacity: 1; }
+  .lm-input:focus-visible { outline: none; }
+  .lm-button { margin-inline-end: -.5rem; }
+}
+.lm-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.lm-fieldset > legend { margin-block-end: .75rem; padding: 0; font-weight: 600; }
+.lm-range { width: 100%; min-height: 2rem; accent-color: var(--lm-primary); cursor: pointer; }

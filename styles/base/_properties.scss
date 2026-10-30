@@ -1,0 +1,30 @@
+@use '../abstracts/tokens';
+
+:root {
+  @each $name, $value in tokens.$palette { --lm-#{$name}: #{$value}; }
+  @each $name, $value in tokens.$colors { --lm-#{$name}: #{$value}; }
+  @each $name, $value in tokens.$spacing { --lm-space-#{$name}: #{$value}; }
+  @each $name, $value in tokens.$radii { --lm-radius-#{$name}: #{$value}; }
+  @each $name, $value in tokens.$type-sizes { --lm-text-#{$name}: #{$value}; }
+  --lm-font-sans: #{tokens.$font-sans};
+  --lm-leading-tight: 1.2;
+  --lm-leading-body: 1.6;
+  --lm-weight-regular: 400;
+  --lm-weight-medium: 500;
+  --lm-weight-semibold: 600;
+  --lm-weight-bold: 700;
+  --lm-control-sm: 2.25rem;
+  --lm-control-md: 3rem;
+  --lm-control-lg: 3.5rem;
+  --lm-icon-sm: 1rem;
+  --lm-icon-md: 1.25rem;
+  --lm-icon-lg: 1.5rem;
+  --lm-icon-xl: 2rem;
+  --lm-duration-fast: 120ms;
+  --lm-duration-normal: 180ms;
+  --lm-shadow-float: 0 12px 40px rgb(18 44 32 / 12%);
+  --lm-z-sticky: 10;
+  --lm-z-popover: 30;
+  --lm-z-toast: 50;
+  --lm-content-max: 76rem;
+}

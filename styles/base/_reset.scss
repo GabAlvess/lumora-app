@@ -1,0 +1,33 @@
+// The reset is scoped. Add lm-ui to the body or to the application wrapper.
+.lm-ui {
+  &, *, *::before, *::after { box-sizing: border-box; }
+  margin: 0;
+  color: var(--lm-text);
+  background: var(--lm-bg);
+  font: var(--lm-weight-regular) var(--lm-text-md) / var(--lm-leading-body) var(--lm-font-sans);
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+
+  :where(h1, h2, h3, h4, p, ul, ol, figure, blockquote) { margin: 0; }
+  :where(button, input, select, textarea) { font: inherit; color: inherit; }
+  :where(button, summary, [role='button']) { -webkit-tap-highlight-color: transparent; }
+  :where(button, input, select, textarea):disabled { cursor: not-allowed; }
+  :where(img, video) { display: block; max-width: 100%; }
+  :where(svg) { vertical-align: middle; }
+  :where(a) { color: var(--lm-primary); text-underline-offset: .2em; }
+  :where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--lm-focus);
+    outline-offset: 3px;
+  }
+  :where([hidden]) { display: none !important; }
+
+  // Only opt-in components animate. Respect the user's motion preference.
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

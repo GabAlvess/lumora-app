@@ -1,0 +1,17 @@
+.lm-icon {
+  display: inline-block;
+  width: var(--lm-icon-size, var(--lm-icon-md));
+  height: var(--lm-icon-size, var(--lm-icon-md));
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.lm-icon--sm { --lm-icon-size: var(--lm-icon-sm); }
+.lm-icon--lg { --lm-icon-size: var(--lm-icon-lg); }
+.lm-icon--xl { --lm-icon-size: var(--lm-icon-xl); }
+.lm-icon-tile { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: var(--lm-radius-md); color: var(--lm-primary); background: var(--lm-primary-soft); flex: 0 0 auto; }

@@ -26,6 +26,17 @@ Adotar uma proposta como **base conceitual** não aprova automaticamente todos o
 - **Documentos relacionados:** [Visão](VISAO.md), [Regras](REGRAS.md), [Design](DESIGN.md), [Roadmap](ROADMAP.md) e [Jornada](02-JORNADA-DO-JOGADOR.md).
 - **Relação com decisões anteriores:** complementa DEC-001; não a substitui.
 
+## DEC-003 — Iniciar o design system SCSS da interface
+
+- **Status:** implementada como primeira base de UI, sujeita a evolução.
+- **Origem:** solicitação do responsável pelo projeto de uma UI moderna, flat e com muitos ícones, acompanhada de referência visual de acesso.
+- **Decisão:** criar tokens semânticos, classes com prefixo `lm-` e componentes SCSS independentes de framework; usar verde profundo, creme, superfícies brancas, bordas finas e cantos suaves.
+- **Escolhas iniciais de implementação:** Manrope local, ícones SVG Lucide, Sass com `@use` e `@forward`, CSS custom properties e build npm reproduzível com lockfile. Essas escolhas não determinam a engine ou a arquitetura da aplicação.
+- **Consequências:** próximas telas podem compor os componentes existentes; a galeria é a referência executável e novos elementos devem reutilizar os tokens. Fontes e ícones incluem suas licenças na saída do build.
+- **Limites:** apresentação e comportamento de demonstração; sem autenticação, economia ou funcionalidades de jogo. Paleta de UI e assinatura visual não encerram a arte do mundo ou o logotipo oficial. Acessibilidade automatizada não substitui avaliação manual.
+- **Documentos relacionados:** [Design system](DESIGN-SYSTEM.md), [Design](DESIGN.md) e [README técnico](../README.md).
+- **Relação com decisões anteriores:** detalha a camada de UI da DEC-002; preserva a fundação original e suas pendências de produto.
+
 ## Modelo para novas decisões
 
 Copiar o modelo abaixo e atribuir o próximo identificador disponível.

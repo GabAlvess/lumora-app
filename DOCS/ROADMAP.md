@@ -12,6 +12,15 @@
 
 **Resultado:** base documental disponível. Isso não significa que as funcionalidades foram implementadas ou que o escopo inicial está aprovado.
 
+## Base de interface — Design system v0.1
+
+- [x] Criar tokens de cores, tipografia, espaçamento, raios e estados.
+- [x] Implementar componentes SCSS independentes de framework.
+- [x] Preparar fonte e catálogo de ícones SVG locais.
+- [x] Criar galeria de componentes e instruções de integração.
+
+**Resultado:** base para compor as próximas telas, documentada em [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). Não substitui a definição da jornada nem implementa as funcionalidades do jogo.
+
 ## 2. Próxima etapa — Documento 02: Jornada do Jogador
 
 - [ ] Definir como será o site.
